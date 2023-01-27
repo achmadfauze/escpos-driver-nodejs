@@ -20,13 +20,11 @@ const port = 4000;
 
 http.listen(port, () => {
   console.log(`Printer: http://localhost:${port}`);
-  // console.log(escpos.USB());
 });
 
 app.post("/printStruck", (req, res) => {
   res.json({ status: "success" });
   let response = req.body;
-  console.log(response);
   printStruck(
     response.carts,
     response.subTotal,
@@ -41,7 +39,9 @@ app.post("/printStruck", (req, res) => {
     response.customer,
     response.agency
   );
+  throw new Error("BROKEN");
 });
+
 // app.post("/printSummary", (req, res) => {
 //   res.json({ status: "success" });
 //   // console.log(req.body);
